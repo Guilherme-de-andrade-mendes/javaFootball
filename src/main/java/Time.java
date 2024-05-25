@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Time {
-    private int idTime;
+    private final int idTime;
     private String pais;
 
     public Time(int idTime, String pais) {

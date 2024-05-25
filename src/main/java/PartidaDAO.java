@@ -58,10 +58,9 @@ public class PartidaDAO implements DAO<Partida> {
         String sql = "SELECT * FROM partida WHERE idPartida = ?";
         Partida p = null;
         TimeDAO timeDAO = new TimeDAO();
-        Time t2;
         try (PreparedStatement stmt = ConnectionFactory.createStatement(sql)) {
-            ResultSet rs = stmt.executeQuery();
             stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 p = new Partida(rs.getInt("idPartida"), rs.getString("dataJogo"),
                         timeDAO.findOne(rs.getInt("time1")), timeDAO.findOne(rs.getInt("time2"))

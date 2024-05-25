@@ -49,8 +49,9 @@ public class TimeDAO implements DAO<Time> {
         String sql = "SELECT * FROM time WHERE idTime = ?";
         Time t = null;
         try (PreparedStatement stmt = ConnectionFactory.createStatement(sql)) {
-            ResultSet rs = stmt.executeQuery();
             stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+
             if (rs.next()) {
                 t = new Time(rs.getInt("idTime"), rs.getString("pais"));
             }
